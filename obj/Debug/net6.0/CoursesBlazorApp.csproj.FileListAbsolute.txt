@@ -61,3 +61,4 @@
 /Users/heba/Desktop/C#Labs/CoursesBlazorApp/obj/Debug/net6.0/CoursesBlazorApp.genruntimeconfig.cache
 /Users/heba/Desktop/C#Labs/CoursesBlazorApp/obj/Debug/net6.0/ref/CoursesBlazorApp.dll
 /Users/heba/Desktop/C#Labs/CoursesBlazorApp/bin/Debug/net6.0/AKSoftware.Blazor.Utilities.dll
+/Users/heba/Desktop/C#Labs/CoursesBlazorApp/obj/Debug/net6.0/CoursesBlazorApp.sourcelink.json
