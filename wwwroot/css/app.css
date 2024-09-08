@@ -1,0 +1,18 @@
+.card-header h2 {
+    font-size: 1.75rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.table th {
+    width: 30%;
+}
+
+.list-group-item {
+    background-color: #f8f9fa;
+    border: none;
+}
+
+.list-group-item:not(:last-child) {
+    border-bottom: 1px solid #dee2e6;
+}

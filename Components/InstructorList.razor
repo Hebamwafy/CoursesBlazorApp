@@ -1,0 +1,39 @@
+@using AKSoftware.Blazor.Utilities
+@page "/InstructorList"
+
+<div class="alert alert-secondary text-center my-4" role="alert">
+    <h1>Instructors List</h1>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Instructor Id</th>
+                <th scope="col">Instructor Name</th>
+                <th scope="col">Instructor Course</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var instructor in instructors)
+            {
+                <tr>
+                    <td>@instructor.Id</td>
+                    <td>@instructor.Name</td>
+                    <td>@instructor.CourseId</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@code {
+    List<Instructor> instructors = new();
+    CoursesDbContext db = new();
+
+    protected override void OnInitialized()
+    {
+        instructors = db.Instructors.ToList();
+        base.OnInitialized();
+    }
+}

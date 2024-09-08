@@ -1,0 +1,64 @@
+@page "/AddNewInstructor"
+@inject NavigationManager Navigator
+@using AKSoftware.Blazor.Utilities
+
+<div class="alert alert-primary text-center" role="alert">
+    Please Add Instructor Name
+</div>
+@if (ShowForm)
+{
+    <div class="alert alert-secondary" role="alert">
+    <h3>Add New Instructor</h3>
+    </div>
+    <EditForm Model="instructor" OnValidSubmit="OnValidSubmit">
+        <div class="mb-3">
+            <label for="exampleInputName" class="form-label">Instructor Name</label>
+            <InputText @bind-Value="instructor.Name" type="text" class="form-control"/>
+        </div>
+            
+        <div class="mb-3">
+            <label for="CourseSelect" class="form-label">Select Course: </label>
+            <InputSelect @bind-Value="instructor.CourseId" class="form-check-input" id="CourseSelect">
+                @foreach (var course in Courses)
+                {
+                    <option value="@course.Id">@course.Name</option>
+                }
+            </InputSelect>
+            <div id="CourseSelectChoice" class="form-text">Select at least one course.</div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add New Instructor</button>
+    </EditForm>
+}
+@code {
+    Instructor instructor = new();
+    List<Course> Courses = new();
+    CoursesDbContext db = new CoursesDbContext();
+
+    bool ShowForm = true;
+    string InstructorName;
+
+    protected override Task OnInitializedAsync()
+    {
+        Courses = db.Courses.ToList();
+        MessagingCenter.Subscribe<CourseAddedSuccessfully>(this, "ShowFormMsg", (sender) =>
+        {
+            ShowForm = true;
+            InvokeAsync(() => StateHasChanged());
+        });
+        return base.OnInitializedAsync();
+    }
+
+    void OnValidSubmit()
+    {
+        db.Instructors.Add(instructor);
+        db.SaveChanges();
+        if (instructor.Id != 0)
+        {
+            InstructorName = instructor.Name;
+            Navigator.NavigateTo("/InstructorHome");
+            instructor = new Instructor();
+            // ShowForm = false;
+        }
+    }
+}

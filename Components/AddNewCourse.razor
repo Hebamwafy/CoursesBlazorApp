@@ -1,0 +1,23 @@
+@page "/AddNewCourse"
+<div class="alert alert-primary text-center" role="alert">
+    Please Add New Course Name
+</div>
+
+<EditForm Model="course" OnValidSubmit="OnValidSubmit">
+    <div class="mb-3">
+        <label for="CourseName" class="form-label">Course Name</label>
+        <InputText @bind-Value="course.Name" type="text" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Add New Course</button>
+</EditForm>
+@code {
+    Course course = new();
+    CoursesDbContext db = new CoursesDbContext();
+
+    void OnValidSubmit()
+    {
+        db.Courses.Add(course);
+        db.SaveChanges();
+        course = new Course();
+    }
+}

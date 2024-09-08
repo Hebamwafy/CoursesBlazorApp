@@ -1,0 +1,73 @@
+@page "/Details/{Id:int}"
+
+<head>
+    <link href="css/app.css" rel="stylesheet" />
+</head>
+
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h2 class="mb-0">Student Details</h2>
+        </div>
+        <div class="card-body">
+            @if (student == null)
+            {
+                <p>Loading...</p>
+            }
+            else
+            {
+                <div class="row">
+                    <div class="col-md-6">
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Name:</th>
+                                    <td>@student.Name</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Address:</th>
+                                    <td>@student.Address</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Age:</th>
+                                    <td>@student.Age</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Enrolled Courses</h4>
+                        @if (student.Enrollments.Any())
+                        {
+                            <ul class="list-group">
+                                @foreach (var enrollment in student.Enrollments)
+                                {
+                                    <li class="list-group-item">
+                                        @enrollment.Course.Name
+                                    </li>
+                                }
+                            </ul>
+                        }
+                        else
+                        {
+                            <p>No Courses Assigned</p>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public int Id { get; set; }
+    Student student;
+    CoursesDbContext db = new();
+    protected override void OnInitialized()
+    {
+        student = db.Students.Include(n => n.Enrollments)
+        .ThenInclude(c => c.Course)
+        .FirstOrDefault(s => s.Id == Id);
+        base.OnInitialized();
+    }
+}

@@ -1,0 +1,101 @@
+@page "/EnrollForm"
+@inject NavigationManager Navigation
+
+<div class="alert alert-primary text-center">
+    <h3>Enroll Student in Courses</h3>
+</div>
+
+<EditForm Model="enroll" OnValidSubmit="OnValidSubmit">
+    <legend>Enroll your name in another Course</legend>
+
+    <div class="mb-3">
+        <label for="selectName" class="form-label">Select Student Name</label>
+        <select id="selectName" class="form-select" @onchange="FilterCourses">
+            <option value="">-- Select Student --</option>
+            @foreach (var student in students)
+            {
+                <option value="@student.Id">@student.Name</option>
+            }
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="SelectCourse" class="form-label">Select Course</label>
+        <select id="SelectCourse" class="form-select" @onchange="UpdateSelectedCourse">
+            <option value="">-- Select Course --</option>
+            @foreach (var course in filteredCourses)
+            {
+                <option value="@course.Id">@course.Name</option>
+            }
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Enroll</button>
+</EditForm>
+
+@code {
+    Enrollment enroll = new();
+    List<Course> Courses = new();
+    List<Student> students = new();
+    List<Course> filteredCourses = new();
+    CoursesDbContext db = new CoursesDbContext();
+
+    protected override Task OnInitializedAsync()
+    {
+        // Load all courses and students
+        Courses = db.Courses.ToList();
+        students = db.Students.ToList();
+        return base.OnInitializedAsync();
+    }
+
+    void FilterCourses(ChangeEventArgs e)
+    {
+        var selectedStudentId = int.Parse(e.Value.ToString());
+
+        // Update the model with the selected student ID
+        enroll.StudentId = selectedStudentId;
+
+        // Find the selected student and their enrolled courses
+        var selectedStudent = db.Students.Include(s => s.Enrollments)
+                                         .ThenInclude(e => e.Course)
+                                         .FirstOrDefault(s => s.Id == selectedStudentId);
+
+        if (selectedStudent != null)
+        {
+            // Filter courses to exclude ones the student is already enrolled in
+            var enrolledCourseIds = selectedStudent.Enrollments.Select(e => e.CourseId).ToList();
+            filteredCourses = Courses.Where(c => !enrolledCourseIds.Contains(c.Id)).ToList();
+        }
+        else
+        {
+            // If no student is selected, show all courses
+            filteredCourses = Courses;
+        }
+
+        StateHasChanged();  // Update the UI
+    }
+
+    void UpdateSelectedCourse(ChangeEventArgs e)
+    {
+        var selectedCourseId = int.Parse(e.Value.ToString());
+        enroll.CourseId = selectedCourseId;
+    }
+
+    void OnValidSubmit()
+    {
+        var selectedCourse = db.Courses.FirstOrDefault(c => c.Id == enroll.CourseId);
+        var selectedStudent = db.Students.FirstOrDefault(s => s.Id == enroll.StudentId);
+
+        if (selectedCourse != null && selectedStudent != null)
+        {
+            enroll.Course = selectedCourse;
+            enroll.Student = selectedStudent;
+
+            db.Enrollments.Add(enroll);
+            db.SaveChanges();
+
+            // Navigate to StudentList page after saving
+            Navigation.NavigateTo("StudentList");
+        }
+    }
+}

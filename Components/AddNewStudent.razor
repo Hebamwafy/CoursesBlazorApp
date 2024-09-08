@@ -1,0 +1,80 @@
+@page "/AddNewStudent"
+@inject NavigationManager Navigator
+@using AKSoftware.Blazor.Utilities
+
+<div class="alert alert-primary text-center" role="alert">
+    Please Add Your Name
+</div>
+@if (ShowForm)
+{
+    <div class="alert alert-secondary" role="alert">
+    <h3>AddNewStudent</h3>
+    </div>
+    <EditForm Model="student" OnValidSubmit="OnValidSubmit">
+        <div class="mb-3">
+            <label for="exampleInputName" class="form-label">Student Name</label>
+            <InputText @bind-Value="student.Name" type="text" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label for="InputStudentAge" class="form-label">Stdent Age</label>
+            <InputNumber @bind-Value="student.Age" type="text" class="form-control" id="InputPlayerAge" />
+            <div id="playerAgeInput" class="form-text">Input Student Age
+            </div>
+        </div>
+        <div class="mb-3">
+            <label  class="form-label">Student Address</label>
+            <InputText @bind-Value="student.Address" type="text" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label for="CourseSelect" class="form-label">Select Course: </label>
+            <InputSelect @bind-Value="enrollment.CourseId" class="form-check-input" id="CourseSelect">
+                @foreach (var course in Courses)
+                {
+                    <option value="@course.Id">@course.Name</option>
+                }
+            </InputSelect>
+        </div>
+    
+        <button type="submit" class="btn btn-primary">Add New Student</button>
+    </EditForm>
+}
+@code {
+    Student student = new();
+    Enrollment enrollment=new();
+    List<Course> Courses = new();
+    @* List <Enrollment> Enrollments=new(); *@
+    CoursesDbContext db = new CoursesDbContext();
+
+    bool ShowForm = true;
+    string StudentName;
+
+    protected override Task OnInitializedAsync()
+    {
+        Courses = db.Courses.ToList();
+        MessagingCenter.Subscribe<CourseAddedSuccessfully>(this, "ShowFormMsg", (sender) =>
+        {
+            ShowForm = true;
+            InvokeAsync(() => StateHasChanged());
+        });
+        return base.OnInitializedAsync();
+    }
+
+    void OnValidSubmit()
+    {
+        var selectedCourse = db.Courses.FirstOrDefault(c => c.Id == enrollment.CourseId);
+        enrollment.Course = selectedCourse;
+        enrollment.Student = student;
+        student.Enrollments.Add(enrollment);
+        db.Enrollments.Add(enrollment);
+        db.Students.Add(student);
+        db.SaveChanges();
+        if (student.Id != 0)
+        {
+            StudentName = student.Name;
+            Navigator.NavigateTo("/StudentHome");
+            student = new Student();
+            // ShowForm = false;
+        }
+    }
+    
+}

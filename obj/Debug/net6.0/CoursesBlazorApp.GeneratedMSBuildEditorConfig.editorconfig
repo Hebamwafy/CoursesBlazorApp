@@ -1,0 +1,111 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = CoursesBlazorApp
+build_property.RootNamespace = CoursesBlazorApp
+build_property.ProjectDir = /Users/heba/Desktop/C#Labs/CoursesBlazorApp/
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /Users/heba/Desktop/C#Labs/CoursesBlazorApp
+build_property._RazorSourceGeneratorDebug = 
+
+[/Users/heba/Desktop/C\#Labs/CoursesBlazorApp/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/heba/Desktop/C\#Labs/CoursesBlazorApp/Components/AddNewCourse.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9BZGROZXdDb3Vyc2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/heba/Desktop/C\#Labs/CoursesBlazorApp/Components/AddNewInstructor.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9BZGROZXdJbnN0cnVjdG9yLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/heba/Desktop/C\#Labs/CoursesBlazorApp/Components/AddNewStudent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9BZGROZXdTdHVkZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/heba/Desktop/C\#Labs/CoursesBlazorApp/Components/CourseAddedSuccessfully.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Db3Vyc2VBZGRlZFN1Y2Nlc3NmdWxseS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/heba/Desktop/C\#Labs/CoursesBlazorApp/Components/CourseList.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Db3Vyc2VMaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/heba/Desktop/C\#Labs/CoursesBlazorApp/Components/Details.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9EZXRhaWxzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/heba/Desktop/C\#Labs/CoursesBlazorApp/Components/InstructorList.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9JbnN0cnVjdG9yTGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/heba/Desktop/C\#Labs/CoursesBlazorApp/Components/StudentList.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9TdHVkZW50TGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/heba/Desktop/C\#Labs/CoursesBlazorApp/Pages/CourseHome.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ291cnNlSG9tZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/heba/Desktop/C\#Labs/CoursesBlazorApp/Pages/EnrollForm.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRW5yb2xsRm9ybS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/heba/Desktop/C\#Labs/CoursesBlazorApp/Pages/FetchData.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRmV0Y2hEYXRhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/heba/Desktop/C\#Labs/CoursesBlazorApp/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/heba/Desktop/C\#Labs/CoursesBlazorApp/Pages/InstructorHome.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5zdHJ1Y3RvckhvbWUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/heba/Desktop/C\#Labs/CoursesBlazorApp/Pages/NavLink.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTmF2TGluay5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/heba/Desktop/C\#Labs/CoursesBlazorApp/Pages/StudentHome.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU3R1ZGVudEhvbWUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/heba/Desktop/C\#Labs/CoursesBlazorApp/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1N1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/heba/Desktop/C\#Labs/CoursesBlazorApp/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/heba/Desktop/C\#Labs/CoursesBlazorApp/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL01haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-mg5xvhuadk
+
+[/Users/heba/Desktop/C\#Labs/CoursesBlazorApp/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL05hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-rywrmuwc1d
+
+[/Users/heba/Desktop/C\#Labs/CoursesBlazorApp/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/heba/Desktop/C\#Labs/CoursesBlazorApp/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX0hvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/heba/Desktop/C\#Labs/CoursesBlazorApp/Pages/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

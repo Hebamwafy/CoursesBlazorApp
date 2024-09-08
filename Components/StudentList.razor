@@ -1,0 +1,56 @@
+@using AKSoftware.Blazor.Utilities
+@page "/StudentList"
+
+<link href="css/site.css" rel="stylesheet" />
+
+<div class="alert alert-secondary text-center my-4" role="alert">
+    <h1>Students List</h1>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Student Name</th>
+                <th scope="col">Student Address</th>
+                <th scope="col">Student Age</th>
+                <th scope="col">Student Course</th>
+                <th scope="col">Student Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in Students)
+            {
+                <tr>
+                    <td>@student.Name</td>
+                    <td>@student.Address</td>
+                    <td>@student.Age</td>
+                    <td>
+                        @if (student.Enrollments.Any())
+                        {
+                            @student.Enrollments.FirstOrDefault().Course.Name
+                        }
+                        else
+                        {
+                            <span class="text-muted">No Courses Assigned</span>
+                        }
+                    </td>
+                    <td>
+                        <a href="@($"Details/{student.Id}")" class="btn btn-primary btn-sm">Details</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@code {
+    List<Student> Students = new();
+    CoursesDbContext db = new();
+
+    protected override void OnInitialized()
+    {
+        Students = db.Students.Include(n => n.Enrollments).ThenInclude(c => c.Course).ToList();
+        base.OnInitialized();
+    }
+}
