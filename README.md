@@ -1,8 +1,3 @@
-# CoursesBlazorApp
-Sure! Here's a polished **README.md** template for your Blazor project, formatted with clear structure and engaging details to showcase your app effectively:
-
----
-
 ## **CoursesBlazorApp**
 
 **A simple Blazor application built for practice—designed to help explore and strengthen your Blazor skills.**
