@@ -111,7 +111,3 @@ Feel free to explore the code and provide feedback! You can get in touch via:
 ### License
 
 This project is open source—use it freely or build upon it to keep practicing and learning!
-
----
-
-Would you like help writing a **summary bullet** for your resume based on this project, or formatting it more compactly for the “Projects” section?
